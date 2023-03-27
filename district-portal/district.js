@@ -97,69 +97,6 @@ button.querySelector(".card-title").textContent = "Example title";
 document.body.appendChild(button);
 
 */
-  function addCustomSection() {
-    // Get the portal div
-    const portal = document.querySelector('.portal.comfy.dark');
-  
-    // Create a new section with class "large"
-    const newSection = document.createElement('section');
-    newSection.classList.add('large');
-  
-    // Create the h2 element and add it to the new section
-    const h2 = document.createElement('h2');
-    h2.classList.add('h5');
-    h2.textContent = 'Custom Tiles';
-    newSection.appendChild(h2);
-  
-    // Create the div with id "ember19" and class "single-row-grid-view __ri-application-frame__single-row-grid-view__5ff25 large comfy dark ember-view"
-    const newDiv = document.createElement('div');
-    newDiv.id = 'ember19';
-    newDiv.classList.add('single-row-grid-view', '__ri-application-frame__single-row-grid-view__5ff25', 'large', 'comfy', 'dark', 'ember-view');
-  
-    // Create the div with id "ember20" and class "grid-view __ri-application-frame__grid-view__4781d large comfy dark ember-view"
-    const newInnerDiv = document.createElement('div');
-    newInnerDiv.id = 'ember20';
-    newInnerDiv.classList.add('grid-view', '__ri-application-frame__grid-view__4781d', 'large', 'comfy', 'dark', 'ember-view');
-  
-    // Get custom tiles from local storage
-    const customTiles = JSON.parse(localStorage.getItem('customTiles'));
-  
-    // Create a button for each custom tile and add it to the inner div
-    customTiles.forEach(tile => {
-      const newButton = document.createElement('button');
-      newButton.classList.add('card', '__ri-application-frame__grid-view__card__69056', 'large', 'ember-view');
-      newButton.setAttribute('type', 'button');
-  
-      const newImg = document.createElement('img');
-      newImg.classList.add('card-img-top');
-      newImg.setAttribute('src', tile.imgLink);
-      newImg.setAttribute('alt', tile.imgAlt);
-      newButton.appendChild(newImg);
-  
-      const newBodyDiv = document.createElement('div');
-      newBodyDiv.classList.add('card-body');
-  
-      const newTitleSpan = document.createElement('span');
-      newTitleSpan.classList.add('card-title', 'text-center', 'two-lines');
-      newTitleSpan.setAttribute('role', 'presentation');
-      newTitleSpan.textContent = tile.cardTitle;
-      newBodyDiv.appendChild(newTitleSpan);
-      
-      newButton.onclick = () => {
-        window.open(tile.btnLink, '_blank');
-      };
-      newButton.appendChild(newBodyDiv);
-      newInnerDiv.appendChild(newButton);
-    });
-  
-    // Append the new div to the new section, and the inner div to the new div
-    newDiv.appendChild(newInnerDiv);
-    newSection.appendChild(newDiv);
-  
-    // Add the new section to the end of the portal div
-    portal.appendChild(newSection);
-  }
-addCustomSection();
 
 function addCustomTileForm() {
   const customTileFormContainer = document.createElement('div');
@@ -196,12 +133,21 @@ function addCustomTileForm() {
   const submitBtn = document.createElement('button');
   submitBtn.textContent = 'Submit';
   customTileForm.appendChild(submitBtn);
+
+  const clearBtn = document.createElement('button');
+  clearBtn.textContent = 'Clear';
+  clearBtn.setAttribute('style', 'display: inline-block; margin-left: 1rem;')
+  customTileFormContainer.appendChild(clearBtn);
   
   customTileFormContainer.appendChild(customTileForm);
   
   // Add event listener to show/hide the form
   addCustomTileBtn.addEventListener('click', () => {
     customTileForm.style.display = 'block';
+  });
+
+  clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('customTiles');
   });
   
   // Add event listener to save the form data on submit
@@ -229,3 +175,69 @@ function addCustomTileForm() {
 }
 
 addCustomTileForm();
+
+
+function addCustomSection() {
+  // Get the portal div
+  const portal = document.querySelector('.portal.comfy.dark');
+
+  // Create a new section with class "large"
+  const newSection = document.createElement('section');
+  newSection.classList.add('large');
+
+  // Create the h2 element and add it to the new section
+  const h2 = document.createElement('h2');
+  h2.classList.add('h5');
+  h2.textContent = 'Custom Tiles';
+  newSection.appendChild(h2);
+
+  // Create the div with id "ember19" and class "single-row-grid-view __ri-application-frame__single-row-grid-view__5ff25 large comfy dark ember-view"
+  const newDiv = document.createElement('div');
+  newDiv.id = 'ember19';
+  newDiv.classList.add('single-row-grid-view', '__ri-application-frame__single-row-grid-view__5ff25', 'large', 'comfy', 'dark', 'ember-view');
+
+  // Create the div with id "ember20" and class "grid-view __ri-application-frame__grid-view__4781d large comfy dark ember-view"
+  const newInnerDiv = document.createElement('div');
+  newInnerDiv.id = 'ember20';
+  newInnerDiv.classList.add('grid-view', '__ri-application-frame__grid-view__4781d', 'large', 'comfy', 'dark', 'ember-view');
+
+  // Get custom tiles from local storage
+  const customTiles = JSON.parse(localStorage.getItem('customTiles'));
+
+  // Create a button for each custom tile and add it to the inner div
+  customTiles.forEach(tile => {
+    const newButton = document.createElement('button');
+    newButton.classList.add('card', '__ri-application-frame__grid-view__card__69056', 'large', 'ember-view');
+    newButton.setAttribute('type', 'button');
+
+    const newImg = document.createElement('img');
+    newImg.classList.add('card-img-top');
+    newImg.setAttribute('src', tile.imgLink);
+    newImg.setAttribute('alt', tile.imgAlt);
+    newImg.setAttribute('style', 'width:8.5rem;height:8rem;padding:1rem;');
+    newButton.appendChild(newImg);
+
+    const newBodyDiv = document.createElement('div');
+    newBodyDiv.classList.add('card-body');
+
+    const newTitleSpan = document.createElement('span');
+    newTitleSpan.classList.add('card-title', 'text-center', 'two-lines');
+    newTitleSpan.setAttribute('role', 'presentation');
+    newTitleSpan.textContent = tile.cardTitle;
+    newButton.appendChild(newTitleSpan);
+    
+    newButton.onclick = () => {
+      window.open(tile.btnLink, '_blank');
+    };
+    newButton.appendChild(newBodyDiv);
+    newInnerDiv.appendChild(newButton);
+  });
+
+  // Append the new div to the new section, and the inner div to the new div
+  newDiv.appendChild(newInnerDiv);
+  newSection.appendChild(newDiv);
+
+  // Add the new section to the end of the portal div
+  portal.appendChild(newSection);
+}
+addCustomSection();
