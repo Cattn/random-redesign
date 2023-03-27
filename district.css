@@ -401,7 +401,8 @@ template {
 }
 
 .h5,h5 {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    text-align: center;
 }
 
 .h6,h6 {
@@ -511,7 +512,7 @@ hr {
 }
 
 .blockquote-footer::before {
-    content: "— "
+    content: "— "
 }
 
 .img-thumbnail {
@@ -10592,8 +10593,8 @@ sup.notification-badge {
 }
 
 .dark .grid-view button.card {
-    background-color: #202020;
-    color: #fff
+    background-color: #1f1f1f;
+    color: #bfbfbf;
 }
 
 .dark .grid-view button.card .card-tile {
@@ -10829,7 +10830,7 @@ sup.notification-badge {
 }
 
 .dark,.dark .app-library .applications-list-view {
-    color: #fff
+    color: #fff;
 }
 
 .bs-spinner .spinner-grow:last-child {
@@ -10882,7 +10883,7 @@ body.modal-open .sso-portal {
 }
 
 .dark {
-    background-color: #202020
+    background-color: #030303;
 }
 
 @media (min-width: 1400px) {
@@ -10967,7 +10968,8 @@ body.modal-open .sso-portal {
 }
 
 .portal .dropdown {
-    display: flex
+    display: flex;
+    justify-content: center;
 }
 
 .portal .dropdown .dropdown-menu {
