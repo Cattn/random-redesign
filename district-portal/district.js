@@ -25,8 +25,8 @@ function replaceInternalCss(internalCssPath, externalCssUrl) {
     .catch(error => console.error(error));
 }
 
-replaceInternalCss('https://assets.identitymgmt.net/rapididentity/2023.01.0-hotfix1/sso-portal-assets/rapididentity-sso-portal-5fe3822d8d9892a8ba97a596dc07ee65.css.gz', 'https://cattn.github.io/random-redesign/district.css?palmbeach.k12.fl.us');
-replaceInternalCss('https://assets.identitymgmt.net/rapididentity/2023.01.0-hotfix1/sso-portal-assets/vendor-67beec1f7f68283e116de48356bd3b19.css.gz', 'https://cattn.github.io/random-redesign/district2.css?palmbeach.k12.fl.us');
+replaceInternalCss('https://assets.identitymgmt.net/rapididentity/2023.01.0-hotfix1/sso-portal-assets/rapididentity-sso-portal-5fe3822d8d9892a8ba97a596dc07ee65.css.gz', 'https://cattn.github.io/random-redesign/district-portal/district.css?palmbeach.k12.fl.us');
+replaceInternalCss('https://assets.identitymgmt.net/rapididentity/2023.01.0-hotfix1/sso-portal-assets/vendor-67beec1f7f68283e116de48356bd3b19.css.gz', 'https://cattn.github.io/random-redesign/district-portal/district2.css?palmbeach.k12.fl.us');
 
 function removeInlineStyleFromCardTiles() {
   const cardTiles = document.querySelectorAll('div.card-tile');
