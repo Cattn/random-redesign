@@ -144,15 +144,10 @@ document.body.appendChild(button);
       newTitleSpan.setAttribute('role', 'presentation');
       newTitleSpan.textContent = tile.cardTitle;
       newBodyDiv.appendChild(newTitleSpan);
-  
-      const newButtonLink = document.createElement('a');
-      newButtonLink.classList.add('button-link');
-      newButtonLink.setAttribute('href', tile.btnLink);
-      newButtonLink.setAttribute('rel', 'noopener');
-      newButtonLink.setAttribute('target', '_blank');
-      newButtonLink.textContent = 'Visit';
-      newBodyDiv.appendChild(newButtonLink);
-  
+      
+      newButton.onclick = () => {
+        window.open(tile.btnLink, '_blank');
+      };
       newButton.appendChild(newBodyDiv);
       newInnerDiv.appendChild(newButton);
     });
